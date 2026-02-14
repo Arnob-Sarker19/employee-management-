@@ -17,9 +17,9 @@ export default function Sidebar() {
     const location = useLocation();
 
     return (
-        <div className="w-64 h-screen bg-[#fce7f3] border-r border-pink-100 flex flex-col hidden md:flex">
+        <div className="w-66 h-screen bg-[#fce7f3] border-r border-pink-100 flex flex-col hidden md:flex">
             {/* Logo */}
-            <div className="p-8 pb-4">
+            <div className="p-6 pb-4">
                  <div className="flex items-center gap-3 mb-8">
                      <div className="bg-pink-600 p-2 rounded-lg">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">

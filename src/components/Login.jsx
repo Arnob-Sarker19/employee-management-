@@ -45,7 +45,7 @@ export default function Login() {
             <div className="pt-4 flex items-center justify-between space-x-4">
                  <Link 
                     to="/register"
-                    className="flex-1 py-2 px-4 border border-gray-300 rounded-full text-gray-700 font-medium hover:bg-gray-50 transition-colors text-center"
+                    className="flex-1 py-2 px-4 border border-gray-300 rounded-full text-gray-700 font-medium hover:bg-gray-50 transition-colors text-center whitespace-nowrap"
                  >
                     Create new account
                  </Link>

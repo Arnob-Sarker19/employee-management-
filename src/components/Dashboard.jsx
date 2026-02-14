@@ -38,28 +38,8 @@ const recentActivity = [
 
 export default function Dashboard() {
   return (
-    <DashboardLayout>
-      <div className="p-8 space-y-8 bg-[#831843]/10 min-h-full">
-         
-         {/* Top Header */}
-         <div className="bg-white/50 backdrop-blur-md rounded-2xl p-6 flex justify-between items-center shadow-sm">
-            <h1 className="text-2xl font-medium text-gray-800">Dashboard</h1>
-            <div className="flex items-center gap-4">
-                <div className="flex items-center gap-3 bg-white px-4 py-2 rounded-xl shadow-sm">
-                    <img src="https://ui-avatars.com/api/?name=Company&background=random" className="w-8 h-8 rounded-lg" alt="Logo" />
-                    <div>
-                        <p className="text-sm font-bold text-gray-900">ABCD Company</p>
-                        <p className="text-xs text-gray-500">Tech</p>
-                    </div>
-                </div>
-                <button className="p-3 bg-[#9d174d] text-white rounded-full shadow-md  hover:bg-[#831843] transition-colors">
-                    <Bell size={20} />
-                </button>
-                <button className="p-3 bg-[#9d174d] text-white rounded-full shadow-md hover:bg-[#831843] transition-colors">
-                    <Settings size={20} />
-                </button>
-            </div>
-         </div>
+    <DashboardLayout title="Dashboard">
+      <div className="p-6 space-y-6 min-h-full">
 
          {/* Stats Cards */}
          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

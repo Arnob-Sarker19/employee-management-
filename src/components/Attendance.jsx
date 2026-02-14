@@ -1,5 +1,9 @@
 import DashboardLayout from './DashboardLayout';
 import { Bell, Settings, Plus, QrCode, Smartphone, Wifi, MapPin, Search, ChevronDown } from 'lucide-react';
+import { useState } from 'react';
+import ManualAttendanceModal from './modals/ManualAttendanceModal';
+import CheckInSettingsModal from './modals/CheckInSettingsModal';
+import AttendanceOptionsModal from './modals/AttendanceOptionsModal';
 
 // Mock Data
 const attendanceData = [
@@ -10,30 +14,14 @@ const attendanceData = [
 ];
 
 export default function Attendance() {
-  return (
-    <DashboardLayout>
-      <div className="p-8 space-y-8 bg-[#831843]/10 min-h-full">
-         
-         {/* Top Header */}
-         <div className="bg-white/50 backdrop-blur-md rounded-2xl p-6 flex justify-between items-center shadow-sm">
-            <h1 className="text-2xl font-medium text-gray-800">Attendance Management</h1>
-            <div className="flex items-center gap-4">
-                <div className="flex items-center gap-3 bg-white px-4 py-2 rounded-xl shadow-sm">
-                    <img src="https://ui-avatars.com/api/?name=Company&background=random" className="w-8 h-8 rounded-lg" alt="Logo" />
-                    <div>
-                        <p className="text-sm font-bold text-gray-900">ABCD Company</p>
-                        <p className="text-xs text-gray-500">Tech</p>
-                    </div>
-                </div>
-                <button className="p-3 bg-[#9d174d] text-white rounded-full shadow-md  hover:bg-[#831843] transition-colors">
-                    <Bell size={20} />
-                </button>
-                <button className="p-3 bg-[#9d174d] text-white rounded-full shadow-md hover:bg-[#831843] transition-colors">
-                    <Settings size={20} />
-                </button>
-            </div>
-         </div>
+  const [showManualModal, setShowManualModal] = useState(false);
+  const [showSettingsModal, setShowSettingsModal] = useState(false);
+  const [showOptionsModal, setShowOptionsModal] = useState(false);
 
+  return (
+    <DashboardLayout title="Attendance Management">
+      <div className="p-6 space-y-6 min-h-full">
+         
          {/* Stats Cards Row */}
          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <StatsCard label="Present Today" value="8" icon={ScanCard} color="text-pink-600" bg="bg-pink-100" />
@@ -46,11 +34,24 @@ export default function Attendance() {
          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
              <div className="w-full md:w-auto"></div> {/* Spacer */}
              <div className="flex gap-4 w-full md:w-auto">
-                 <button className="flex items-center gap-2 px-4 py-2 bg-transparent border border-gray-600 rounded-lg text-gray-700 font-medium hover:bg-gray-50 transition-colors">
+                 <button 
+                    onClick={() => setShowManualModal(true)}
+                    className="flex items-center gap-2 px-4 py-2 bg-transparent border border-gray-600 rounded-lg text-gray-700 font-medium hover:bg-gray-50 transition-colors"
+                 >
                     <Plus size={18} />
                     Add Manual Attendance
                  </button>
-                 <button className="flex items-center gap-2 px-4 py-2 bg-[#9d174d] text-white rounded-lg font-medium hover:bg-[#831843] transition-colors">
+                 <button 
+                    onClick={() => setShowOptionsModal(true)}
+                    className="flex items-center gap-2 px-4 py-2 bg-white text-[#9d174d] border border-[#9d174d] rounded-lg font-medium hover:bg-pink-50 transition-colors"
+                 >
+                    <Settings size={18} />
+                    Options
+                 </button>
+                 <button 
+                    onClick={() => setShowSettingsModal(true)}
+                    className="flex items-center gap-2 px-4 py-2 bg-[#9d174d] text-white rounded-lg font-medium hover:bg-[#831843] transition-colors"
+                 >
                     <Settings size={18} />
                     Check-In Settings
                  </button>
@@ -133,6 +134,13 @@ export default function Attendance() {
                 </table>
             </div>
          </div>
+
+
+
+         {/* Modals */}
+         <ManualAttendanceModal isOpen={showManualModal} onClose={() => setShowManualModal(false)} />
+         <CheckInSettingsModal isOpen={showSettingsModal} onClose={() => setShowSettingsModal(false)} />
+         <AttendanceOptionsModal isOpen={showOptionsModal} onClose={() => setShowOptionsModal(false)} />
 
       </div>
     </DashboardLayout>
