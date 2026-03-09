@@ -1,0 +1,10 @@
+node_modules
+.env
+dist
+.DS_Store
+*.db
+*.db-journal
+generated
+out.txt
+err.txt
+prisma_out.txt
